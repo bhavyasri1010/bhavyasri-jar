@@ -1,6 +1,3 @@
-user@panda:~/calculator-app$ pwd
-/home/user/calculator-app
-user@panda:~/calculator-app$ cat Jenkinsfile
 pipeline {
     agent any
 
@@ -8,27 +5,20 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                sh '''
-                    cd /home/user/calculator-app
-                    mvn clean test
-                '''
+                sh 'mvn clean test'
             }
         }
 
         stage('Package') {
             steps {
-                sh '''
-                    cd /home/user/calculator-app
-                    mvn package
-                    cp target/*.jar $WORKSPACE/
-                '''
+                sh 'mvn package'
             }
         }
     }
 
     post {
         success {
-            archiveArtifacts artifacts: '*.jar'
+            archiveArtifacts artifacts: 'target/*.jar'
         }
     }
 }
