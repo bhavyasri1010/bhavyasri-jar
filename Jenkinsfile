@@ -1,3 +1,6 @@
+user@panda:~/calculator-app$ pwd
+/home/user/calculator-app
+user@panda:~/calculator-app$ cat Jenkinsfile
 pipeline {
     agent any
 
