@@ -9,21 +9,22 @@ pipeline {
             }
         }
 
-        stage('Build WAR') {
+        stage('Build & Test') {
             steps {
-                sh '''
-                    mvn clean package
+                sh 'mvn clean test'
+            }
+        }
 
-                    # Copy WAR to workspace (optional, already in workspace)
-                    cp target/*.war $WORKSPACE/
-                '''
+        stage('Package') {
+            steps {
+                sh 'mvn package'
             }
         }
     }
 
     post {
         success {
-            archiveArtifacts artifacts: 'target/*.war'
+            archiveArtifacts artifacts: 'target/*.jar'
         }
     }
 }
