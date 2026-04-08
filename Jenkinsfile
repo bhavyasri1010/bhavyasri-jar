@@ -3,6 +3,12 @@ pipeline {
 
     stages {
 
+        stage('Checkout Code') {
+            steps {
+                git branch: 'master', url: 'https://github.com/bhavyasri1010/bhavyasri-jar.git'
+            }
+        }
+
         stage('Build & Test') {
             steps {
                 sh 'mvn clean test'
