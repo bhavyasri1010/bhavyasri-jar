@@ -5,7 +5,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'master', url: 'https://github.com/bhavyasri1010/bhavyasri-jar.git'
+                git branch: 'main', url: 'https://github.com/bhavyasri1010/bhavyasri-jar.git'
             }
         }
 
